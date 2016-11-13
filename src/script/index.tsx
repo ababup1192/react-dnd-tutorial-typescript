@@ -16,7 +16,10 @@ const gameAction: GameAction = new GameAction(dispatcher, firstPosition);
 const gameEvent: Bacon.Property<Position, Position> = gameAction.createProperty();
 
 gameEvent.onValue((position: Position) => {
-    ReactDOM.render(<Board knightPosition={position} gameAction={gameAction} />,
+    ReactDOM.render(<Board
+        knightPosition={position}
+        gameAction={gameAction}
+        gameEvent={gameEvent} />,
         document.getElementById("content")
     );
 });

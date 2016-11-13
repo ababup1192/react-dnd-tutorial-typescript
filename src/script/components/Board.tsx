@@ -3,13 +3,14 @@ import * as ReactDOM from "react-dom";
 import { List, Range } from "immutable";
 import { KightSource } from "./Knight";
 import { BoardSquareTarget } from "./BoardSquare";
-import { GameAction } from "../actionCreators/GameAction";
+import { GameAction, Position } from "../actionCreators/GameAction";
 import { DragDropContext } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 
 interface IBoardProps {
     knightPosition: [number, number];
     gameAction: GameAction;
+    gameEvent: Bacon.Property<Position, boolean>;
 }
 
 class Board extends React.Component<IBoardProps, any> {
@@ -25,6 +26,7 @@ class Board extends React.Component<IBoardProps, any> {
         return <div key={i}
             className="square-area">
             <BoardSquareTarget
+                knightPosition={ this.props.knightPosition }
                 position={[x, y]}
                 black={black}
                 gameAction={this.props.gameAction}>
