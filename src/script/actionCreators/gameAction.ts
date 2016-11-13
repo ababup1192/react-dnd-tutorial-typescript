@@ -36,8 +36,6 @@ export class GameAction {
     }
 
     private _moveKnight(oldPosition: Position, newPosition: Position): Position {
-        return this.canMoveKnight(oldPosition, newPosition) ?
-            newPosition :
-            oldPosition;
+        return newPosition;
     }
 }
